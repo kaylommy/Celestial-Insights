@@ -1,0 +1,25 @@
+{
+  "name": "angel-number-calculator",
+  "version": "1.0.0",
+  "description": "angel number calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaylommy/angel-number-calculator.git"
+  },
+  "author": "kayla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaylommy/angel-number-calculator/issues"
+  },
+  "homepage": "https://github.com/kaylommy/angel-number-calculator#readme",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.0.2",
+    "react": "^18.3.1"
+  }
+}
