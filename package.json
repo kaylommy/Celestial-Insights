@@ -1,25 +1,22 @@
 {
   "name": "angel-number-calculator",
   "version": "1.0.0",
-  "description": "angel number calculator",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node Backend/server.js",
+    "develop": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "install": "cd backend && npm i && cd ../frontend && npm i",
+    "seed": "cd backend && npm run seed",
+    "build": "cd frontend && npm run build",
+    "render-build": "npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaylommy/angel-number-calculator.git"
-  },
-  "author": "kayla",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kaylommy/angel-number-calculator/issues"
-  },
-  "homepage": "https://github.com/kaylommy/angel-number-calculator#readme",
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.0.2",
-    "react": "^18.3.1"
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4",
+    "vite": "^5.4.3"
   }
 }
