@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx'
 import Homepage from './components/home/homepage.jsx';
+import Calculator from './components/calculator/calculator.jsx';
 
 const router = createBrowserRouter([
     {
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
     //       path: "signUp",
     //       element: <SignUpPage />
     //     },
-    //     {
-    //       path: "profile",
-    //       element: <ProfilePage />,
-    //     },
+        {
+          path: "calculator",
+          element: <Calculator />,
+        },
     //     {
     //       path: "about-us",
     //       element: <AboutUs />

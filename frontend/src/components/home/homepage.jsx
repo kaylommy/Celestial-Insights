@@ -1,8 +1,10 @@
 
 import { Container, Box, Typography, Button, Grid, Paper } from '@mui/material';
 import heroImage from '../../assets/images/hero-img.avif';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
+  const navigate = useNavigate();
   return (
 <>
       {/* Hero Section */}
@@ -79,7 +81,7 @@ const Homepage = () => {
               <Typography variant="body1" gutterBottom>
                 Calculate your angel numbers.
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B'}}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B'}} onClick={() => navigate('/calculator')}>
                 Use Calculator
               </Button>
             </Box>

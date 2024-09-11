@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, useMediaQuery, ThemeProvider, createTheme, IconButton, MenuItem, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -11,6 +12,7 @@ const theme = createTheme({
 });
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
