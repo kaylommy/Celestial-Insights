@@ -6,6 +6,7 @@ import {
   } from '@apollo/client';
   import { setContext } from '@apollo/client/link/context';
   import { Outlet } from 'react-router-dom';
+  import './App.css';
 
   import Navbar from './components/nav/navbar';
 
@@ -36,9 +37,7 @@ const client = new ApolloClient({
       <ApolloProvider client={client}>
             {/* <Header /> */}
             <Navbar />
-            <div className="container">
               <Outlet />
-            </div>
             {/* <Footer /> */}
       </ApolloProvider>
     );

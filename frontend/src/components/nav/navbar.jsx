@@ -1,22 +1,88 @@
-
-import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, useMediaQuery, ThemeProvider, createTheme, IconButton, MenuItem, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#93A87E'
+    }
+  }
+});
+
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const menuItems = [
+    { text: 'Home', link: '/' },
+    { text: 'Calculator', link: '/calculator' },
+    { text: 'Horoscope', link: '/horoscope' },
+    { text: 'Login', link: '/login' },
+  ];
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          My Website
-        </Typography>
-        <Button color="inherit">Home</Button>
-        <Button color="inherit">About</Button>
-        <Button color="inherit">Contact</Button>
-      </Toolbar>
-    </AppBar>
+    <ThemeProvider theme={theme}>
+      <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 139, 0.4)', borderRadius: '30px' }}>
+        <Toolbar>
+          <Typography variant="h6" sx={{ color: 'white', flexGrow: 1 }}>
+            Celestial Insights
+          </Typography>
+          {matches ? (
+            <>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleMenu}
+                sx={{
+                  color: 'black',
+                  marginLeft: 'auto'
+                }}>
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+              >
+                {menuItems.map((item, index) => (
+                  <MenuItem key={index} component="a" href={item.link} onClick={handleClose}>
+                    {item.text}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <>
+              {menuItems.map((item, index) => (
+                <Button color="inherit" sx={{ color: 'white' }} key={index} href={item.link}>
+                  {item.text}
+                </Button>
+              ))}
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+    </ThemeProvider>
   );
 };
 
