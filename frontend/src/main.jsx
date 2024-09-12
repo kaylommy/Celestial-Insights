@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
 import Homepage from './components/home/homepage.jsx';
 import Calculator from './components/calculator/calculator.jsx';
+// import Login from './components/login/login.jsx';
+import Quiz from './components/quiz/quiz.jsx';
 
 const router = createBrowserRouter([
     {
@@ -15,10 +17,10 @@ const router = createBrowserRouter([
           index: true,
           element: <Homepage />
         },
-    //     {
-    //       path: "login",
-    //       element: <LoginPage />
-    //     },
+        // {
+        //   path: "login",
+        //   element: <Login />
+        // },
     //     {
     //       path: "signUp",
     //       element: <SignUpPage />
@@ -27,10 +29,10 @@ const router = createBrowserRouter([
           path: "calculator",
           element: <Calculator />,
         },
-    //     {
-    //       path: "about-us",
-    //       element: <AboutUs />
-    //     },
+        {
+          path: "quiz",
+          element: <Quiz />
+        },
     //     {
     //       path: "settings",
     //       element: <SettingsPage />

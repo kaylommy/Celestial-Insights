@@ -28,12 +28,13 @@ const Navbar = () => {
     { text: 'Home', link: '/' },
     { text: 'Calculator', link: '/calculator' },
     { text: 'Horoscope', link: '/horoscope' },
+    {text: 'Quiz', link: '/quiz'},
     { text: 'Login', link: '/login' },
   ];
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 139, 0.4)', borderRadius: '30px' }}>
+      <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 139, 0.4)', borderRadius: '20px' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ color: 'white', flexGrow: 1 }}>
             Celestial Insights

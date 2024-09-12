@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { User } = require('../models/User');
+const { User } = require('../models');
 
 const secret = process.env.JWT_SECRET || 'your_secret_key';
 const expiration = '2h';
