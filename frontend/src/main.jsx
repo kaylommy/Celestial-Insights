@@ -4,8 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
 import Homepage from './components/home/homepage.jsx';
 import Calculator from './components/calculator/calculator.jsx';
-// import Login from './components/login/login.jsx';
+import Login from './components/login/login.jsx';
 import Quiz from './components/quiz/quiz.jsx';
+import SignUp from './components/signup/signup.jsx';
 
 const router = createBrowserRouter([
     {
@@ -17,14 +18,14 @@ const router = createBrowserRouter([
           index: true,
           element: <Homepage />
         },
-        // {
-        //   path: "login",
-        //   element: <Login />
-        // },
-    //     {
-    //       path: "signUp",
-    //       element: <SignUpPage />
-    //     },
+        {
+          path: "login",
+          element: <Login />
+        },
+        {
+          path: "signUp",
+          element: <SignUp />
+        },
         {
           path: "calculator",
           element: <Calculator />,

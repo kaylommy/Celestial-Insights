@@ -48,13 +48,13 @@ const Homepage = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography variant="h4" component="h2" gutterBottom>
+              <Typography variant="h4" component="h2" gutterBottom >
                 Get Started
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Create an account to begin!
+                Create an account to recive weekly horoscopes!
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }} onClick={() => navigate('login')}>
                 Get Started
               </Button>
             </Box>
