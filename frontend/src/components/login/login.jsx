@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [login] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+      Auth.login(data.login.token);
+      navigate('/');
+    } catch (e) {
+      console.error(e);
+      setErrorMessage('Incorrect username or password!');
+    }
+    setFormState({
+      username: '',
+      password: '',
+    });
   };
 
   return (
@@ -25,23 +50,30 @@ const Login = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           Login
         </Typography>
+        {errorMessage && (
+          <Typography color="error" gutterBottom>
+            {errorMessage}
+          </Typography>
+        )}
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Email"
+            label="Username"
+            name="username"
             variant="outlined"
             margin="normal"
             fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formState.username}
+            onChange={handleChange}
           />
           <TextField
             label="Password"
+            name="password"
             type="password"
             variant="outlined"
             margin="normal"
             fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formState.password}
+            onChange={handleChange}
           />
           <Button
             type="submit"
@@ -53,11 +85,9 @@ const Login = () => {
             Login
           </Button>
         </form>
-        <Typography sx={{ marginTop: 3 }}>Don't have an account?{' '}
-            <Link to="/signUp" style={{ color: '#46563c', fontWeight: 'bold', textDecoration: 'none', '&:hover': { color: '#869f76' } }}>
-    Sign Up
-  </Link>
-            </Typography>
+        <Typography variant="body2" style={{ marginTop: '16px' }}>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </Typography>
       </Box>
     </Container>
   );
