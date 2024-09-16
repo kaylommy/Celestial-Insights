@@ -54,7 +54,10 @@ const Homepage = () => {
               <Typography variant="body1" gutterBottom>
                 Create an account to recive weekly horoscopes!
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }} onClick={() => navigate('login')}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }} onClick={() => navigate('login')}>
                 Get Started
               </Button>
             </Box>
@@ -80,7 +83,10 @@ const Homepage = () => {
               <Typography variant="body1" gutterBottom>
                 Calculate your angel numbers.
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }} onClick={() => navigate('calculator')}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }} onClick={() => navigate('calculator')}>
                 Use Calculator
               </Button>
             </Box>
@@ -106,7 +112,10 @@ const Homepage = () => {
               <Typography variant="body1" gutterBottom>
                 Check your daily horoscope.
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }}>
                 Check Horoscope
               </Button>
             </Box>
@@ -132,7 +141,10 @@ const Homepage = () => {
               <Typography variant="body1" gutterBottom>
                 Take our quiz to find out which crystal suits your needs
               </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B' }} onClick={() => navigate('quiz')}>
+              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }} onClick={() => navigate('quiz')}>
                 Take Quiz
               </Button>
             </Box>

@@ -45,9 +45,10 @@ const Calculator = () => {
     display="flex"
     justifyContent="center"
     alignItems="center"
-    minHeight="100vh"
+    minHeight="auto"
+    paddingTop="4rem"
   >
-    <Container sx={{ textAlign: 'center' }}>
+    <Container sx={{ textAlign: 'center', backgroundColor: '#fbf5e8', padding: '15rem', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
       <Typography variant="h4" component="h1" gutterBottom>
         <strong>Angel Number Calculator</strong>
       </Typography>
@@ -68,10 +69,15 @@ const Calculator = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          InputProps={{ style: {backgroundColor: 'White'}
+        }}
           sx={{ width: '100%' }}
         />
       </Box>
-      <Button variant="contained" color="primary" onClick={calculateAngelNumber}>
+      <Button variant="contained" color="primary" onClick={calculateAngelNumber}               sx={{ width: '10%', maxWidth: '120px', backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }}>
         Calculate
       </Button>
       {angelNumber !== null && (
