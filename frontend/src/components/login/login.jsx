@@ -39,23 +39,27 @@ const Login = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', paddingTop: '100px'}}>
+              <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center'}}>
+          Login
+        </Typography>
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        minHeight="100vh"
+        height= 'auto'
+        sx={{ backgroundColor: '#fbf5e8', padding: '6rem',
+          borderRadius: '8px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          maxWidth: '25rem',
+        minHeight: '25rem' }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Login
-        </Typography>
-        {errorMessage && (
-          <Typography color="error" gutterBottom>
-            {errorMessage}
-          </Typography>
-        )}
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit} style={{ maxHeight: '25rem'}}>
           <TextField
             label="Username"
             name="username"
@@ -64,6 +68,9 @@ const Login = () => {
             fullWidth
             value={formState.username}
             onChange={handleChange}
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="Password"
@@ -74,20 +81,35 @@ const Login = () => {
             fullWidth
             value={formState.password}
             onChange={handleChange}
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            style={{ marginTop: '16px' }}
-          >
-            Login
-          </Button>
+          <Box display="flex" justifyContent="center" width="100%" mt={2}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ width: '10%', maxWidth: '120px', backgroundColor: '#00008B',
+                '&:hover': {
+                  backgroundColor: '#00008B66',
+                }, }}
+            >
+              Login
+            </Button>
+          </Box>   
         </form>
-        <Typography variant="body2" style={{ marginTop: '16px' }}>
+        <Typography variant="body2" style={{ marginTop: '16px', paddingTop: '1rem' }}>
           Don't have an account? <Link to="/signup">Sign up</Link>
         </Typography>
+        <Box sx={{ height: '2rem', padding: '1rem' }}>
+        {errorMessage && (
+          <Typography color="error" gutterBottom>
+            {errorMessage}
+          </Typography>
+        )}
+      </Box>
       </Box>
     </Container>
   );

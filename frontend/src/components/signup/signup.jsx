@@ -8,7 +8,6 @@ const SignUp = () => {
   const [createUser] = useMutation(CREATE_USER);
   const [showPassword, setShowPassword] = useState(false);
   const [dobError, setDobError] = useState('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [formError, setFormError] = useState('');
 
   const calculateAge = (dob) => {
@@ -23,10 +22,8 @@ const SignUp = () => {
 
     if (age < 13 || age > 150) {
       setDobError('You must be at least 13 years old and less than 150 years old to sign up.');
-      setIsButtonDisabled(true);
     } else {
       setDobError('');
-      setIsButtonDisabled(false);
     }
   };
 
@@ -57,22 +54,29 @@ const SignUp = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', paddingTop: '100px'}}>
+              <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center'}}>
+          Sign Up
+        </Typography>
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        minHeight="100vh"
+        height= 'auto'
+        sx={{ backgroundColor: '#fbf5e8', padding: '6rem',
+          borderRadius: '8px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          maxWidth: '25rem',
+          minHeight: '25rem',
+          maxHeight: '30rem'
+        }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Sign Up
-        </Typography>
-        {formError && (
-          <Typography color="error" gutterBottom>
-            {formError}
-          </Typography>
-        )}
+
+
         <form onSubmit={handleFormSubmit}>
           <TextField
             label="Username"
@@ -81,6 +85,9 @@ const SignUp = () => {
             margin="normal"
             fullWidth
             required
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="First Name"
@@ -89,6 +96,9 @@ const SignUp = () => {
             margin="normal"
             fullWidth
             required
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="Last Name"
@@ -97,6 +107,9 @@ const SignUp = () => {
             margin="normal"
             fullWidth
             required
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="Email"
@@ -106,6 +119,9 @@ const SignUp = () => {
             margin="normal"
             fullWidth
             required
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="Password"
@@ -115,6 +131,9 @@ const SignUp = () => {
             margin="normal"
             fullWidth
             required
+            InputProps={{
+              style: {backgroundColor: 'white'}
+            }}
           />
           <TextField
             label="Date of Birth"
@@ -126,6 +145,9 @@ const SignUp = () => {
             required
             InputLabelProps={{
               shrink: true,
+            }}
+            InputProps={{
+              style: {backgroundColor: 'white'}
             }}
             onChange={handleDateOfBirthChange}
           />
@@ -139,12 +161,21 @@ const SignUp = () => {
             variant="contained"
             color="primary"
             fullWidth
-            style={{ marginTop: '16px' }}
-            disabled={isButtonDisabled}
+            sx={{ marginTop: '16px', backgroundColor: '#00008B',
+              '&:hover': {
+                backgroundColor: '#00008B66',
+              }, }}
           >
             Sign Up
           </Button>
         </form>
+        <Box sx={{ height: '2rem', padding: '1rem' }}>
+        {formError && (
+          <Typography color="error" gutterBottom>
+            {formError}
+          </Typography>
+        )}
+              </Box>
       </Box>
     </Container>
   );
