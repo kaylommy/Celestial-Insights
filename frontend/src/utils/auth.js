@@ -1,8 +1,8 @@
-import * as jwt_decode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 class AuthService {
   getProfile() {
-    return jwt_decode.default(this.getToken());
+    return jwtDecode(this.getToken());
   }
 
   loggedIn() {
@@ -11,13 +11,17 @@ class AuthService {
   }
 
   isTokenExpired(token) {
-    const decoded = jwt_decode.default(token); 
+    const decoded = jwtDecode(token);
     if (decoded.exp < Date.now() / 1000) {
       localStorage.removeItem('id_token');
       return true;
     }
-
     return false;
+  }
+  ensureGuestAccess() {
+    if (this.loggedIn()) {
+      window.location.assign('/'); 
+    }
   }
 
   getToken() {
@@ -26,7 +30,7 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    window.location.assign('/home');
   }
 
   logout() {

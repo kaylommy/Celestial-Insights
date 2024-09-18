@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, useMediaQuery, ThemeProvider, createTheme, IconButton, MenuItem, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useLocation } from 'react-router-dom';
+import Auth from '../../utils/auth'
 
 const theme = createTheme({
   palette: {
@@ -16,6 +17,7 @@ const Navbar = () => {
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const hideNavbarRoutes = ['/login', '/signup'];
+  const isLoggedIn = Auth.loggedIn();
   
   if (hideNavbarRoutes.includes(location.pathname)) {
     return null;
@@ -29,12 +31,16 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+    const handleLogout = () => {
+    Auth.logout();
+  };
+
   const menuItems = [
     { text: 'Home', link: '/' },
     { text: 'Calculator', link: '/calculator' },
     { text: 'Horoscope', link: '/horoscope' },
     {text: 'Quiz', link: '/quiz'},
-    { text: 'Login', link: '/login' },
+    ...(!isLoggedIn ? [{ text: 'Login', link: '/login' }] : [{ text: 'Logout', link: '/', onClick: handleLogout }]),
   ];
 
   return (
