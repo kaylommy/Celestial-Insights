@@ -17,7 +17,7 @@ const Navbar = () => {
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const hideNavbarRoutes = ['/login', '/signup'];
-  const isLoggedIn = Auth.loggedIn();
+  const isLoggedIn = Auth.loggedIn()
   
   if (hideNavbarRoutes.includes(location.pathname)) {
     return null;
@@ -31,16 +31,12 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
-    const handleLogout = () => {
-    Auth.logout();
-  };
-
   const menuItems = [
     { text: 'Home', link: '/' },
     { text: 'Calculator', link: '/calculator' },
     { text: 'Horoscope', link: '/horoscope' },
     {text: 'Quiz', link: '/quiz'},
-    ...(!isLoggedIn ? [{ text: 'Login', link: '/login' }] : [{ text: 'Logout', link: '/', onClick: handleLogout }]),
+    { text: 'Login', link: '/login' },
   ];
 
   return (

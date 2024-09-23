@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
+import background from '../../assets/images/background-img.jpg'
 
 const Calculator = () => {
   const [birthdate, setBirthdate] = useState('');
@@ -41,15 +42,19 @@ const Calculator = () => {
   };
 
   return (
+
     <Box
     display="flex"
     justifyContent="center"
-    alignItems="center"
-    minHeight="auto"
-    paddingTop="4rem"
+    alignItems="flex-start"
+    minHeight="100vh"
+    // paddingTop="4rem"
+    maxHeight="1200px"
+    sx={{ backgroundImage: `url(${background})`}}
   >
-    <Container sx={{ textAlign: 'center', backgroundColor: '#fbf5e8', padding: '15rem', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-      <Typography variant="h4" component="h1" gutterBottom>
+    <Container sx={{ backgroundColor: 'white', height: '100vh'}}>
+    <Container sx={{ textAlign: 'center', backgroundColor: '#fbf5e8', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', height: '45rem', marginTop: '4rem' }}>
+      <Typography variant="h4" component="h1" sx={{ padding: '2rem'}}>
         <strong>Angel Number Calculator</strong>
       </Typography>
       <Typography>
@@ -81,15 +86,26 @@ const Calculator = () => {
         Calculate
       </Button>
       {angelNumber !== null && (
-        <>
-        <Typography variant="h5" component="h2" sx={{ marginTop: '20px' }}>
-          Your Angel Number is: {angelNumber}
-        </Typography>
-                  <Typography variant="body1" sx={{ marginTop: '10px' }}>
+                <Box
+                mt={4}
+                sx={{
+                  backgroundColor: 'white',
+                  padding: 2,
+                  borderRadius: 1,
+                  boxShadow: 1,
+                  width: 'auto',
+                  height: '10rem'
+                }}
+              >
+                <Typography variant="h5">
+                  Your Angel Number is: {angelNumber}
+                </Typography>
+                <Typography variant="body1" mt={2}>
                   {angelNumberDescriptions[angelNumber]}
                 </Typography>
-                </>
+              </Box>
       )}
+    </Container>
     </Container>
     </Box>
   );

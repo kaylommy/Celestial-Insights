@@ -128,6 +128,17 @@ const Quiz = () => {
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: '50px' }}>
+            <Box
+        sx={{
+          backgroundColor: '#fbf5e8',
+          padding: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+          marginTop: 8,
+          textAlign: 'left',
+          
+        }}
+      >
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -202,6 +213,7 @@ const Quiz = () => {
             </Box>
           </>
         )}
+      </Box>
       </Box>
     </Container>
   );

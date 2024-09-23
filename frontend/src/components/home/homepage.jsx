@@ -24,15 +24,16 @@ const Homepage = () => {
           color: 'white',
           textAlign: 'center',
           zIndex: -1,
+          borderBottom: '5px solid rgba(0, 0, 139, 0.8)'
         }}
       >
-        <Typography variant="h2" component="h1" sx={{ padding: '20px', borderRadius: '10px' }}>
+        <Typography variant="h2" component="h1" sx={{ padding: '20px', borderRadius: '10px', fontFamily: 'Cinzel, serif', }}>
           Welcome to Celestial Insights
         </Typography>
       </Paper>
 
       {/* Content Sections */}
-      <Container sx={{ marginTop: '60vh' }}>
+      <Container sx={{ marginTop: '55vh', backgroundColor: 'rgba(0, 0, 139, 0.4)', padding: '2rem', borderRadius: '10px', boxShadow: 3 }}>
         <Grid container spacing={4}>
           {/* Get Started Section */}
           <Grid item xs={12} md={3}>
@@ -46,6 +47,10 @@ const Homepage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
               }}
             >
               <Typography variant="h4" component="h2" gutterBottom >
@@ -57,7 +62,8 @@ const Homepage = () => {
               <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
                 '&:hover': {
                   backgroundColor: '#00008B66',
-                }, }} onClick={() => navigate('login')}>
+                },
+                 }} onClick={() => navigate('login')}>
                 Get Started
               </Button>
             </Box>
@@ -75,10 +81,14 @@ const Homepage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
               }}
             >
               <Typography variant="h4" component="h2" gutterBottom>
-                Angel Number Calculator
+                Angel Number
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Calculate your angel numbers.
@@ -104,6 +114,10 @@ const Homepage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
               }}
             >
               <Typography variant="h4" component="h2" gutterBottom>
@@ -133,6 +147,10 @@ const Homepage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
               }}
             >
               <Typography variant="h4" component="h2" gutterBottom>
