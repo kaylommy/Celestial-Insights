@@ -34,7 +34,6 @@ const Navbar = () => {
   const menuItems = [
     { text: 'Home', link: '/' },
     { text: 'Calculator', link: '/calculator' },
-    { text: 'Horoscope', link: '/horoscope' },
     {text: 'Quiz', link: '/quiz'},
     { text: 'Login', link: '/login' },
   ];

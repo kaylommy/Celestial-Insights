@@ -102,39 +102,6 @@ const Homepage = () => {
             </Box>
           </Grid>
 
-          {/* Horoscope Section */}
-          <Grid item xs={12} md={3}>
-            <Box
-              sx={{
-                padding: '20px',
-                backgroundColor: '#fbf5e8',
-                borderRadius: '10px',
-                textAlign: 'center',
-                height: '12rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                transition: 'transform 0.3s ease-in-out',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                },
-              }}
-            >
-              <Typography variant="h4" component="h2" gutterBottom>
-                Horoscope
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Check your daily horoscope.
-              </Typography>
-              <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
-                '&:hover': {
-                  backgroundColor: '#00008B66',
-                }, }}>
-                Check Horoscope
-              </Button>
-            </Box>
-          </Grid>
-
           {/* Crystal Quiz Section */}
           <Grid item xs={12} md={3}>
             <Box
