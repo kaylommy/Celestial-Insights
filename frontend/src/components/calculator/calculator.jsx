@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
-import background from '../../assets/images/background-img.jpg'
+
 
 const Calculator = () => {
   const [birthdate, setBirthdate] = useState('');
@@ -50,7 +50,7 @@ const Calculator = () => {
     minHeight="100vh"
     // paddingTop="4rem"
     maxHeight="1200px"
-    sx={{ backgroundImage: `url(${background})`}}
+
   >
     <Container sx={{ backgroundColor: 'white', height: '100vh'}}>
     <Container sx={{ textAlign: 'center', backgroundColor: '#fbf5e8', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', height: '45rem', marginTop: '4rem' }}>

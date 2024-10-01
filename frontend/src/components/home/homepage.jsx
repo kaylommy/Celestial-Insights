@@ -33,8 +33,9 @@ const Homepage = () => {
       </Paper>
 
       {/* Content Sections */}
-      <Container sx={{ marginTop: '55vh', backgroundColor: 'rgba(0, 0, 139, 0.4)', padding: '2rem', borderRadius: '10px', boxShadow: 3 }}>
-        <Grid container spacing={4}>
+      <Container sx={{ marginTop: '55vh', backgroundColor: 'rgba(0, 0, 139, 0.4)', padding: '2rem', borderRadius: '10px', boxShadow: 3, display: 'flex', justifyContent: 'center' }}>
+        <Grid container spacing={4}
+        sx={{ justifyContent: 'center', alignItems: 'center' }}>
           {/* Get Started Section */}
           <Grid item xs={12} md={3}>
             <Box
@@ -57,7 +58,7 @@ const Homepage = () => {
                 Get Started
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Create an account to recive weekly horoscopes!
+                Create an account with us!
               </Typography>
               <Button variant="contained" color="primary" sx={{ backgroundColor: '#00008B',
                 '&:hover': {

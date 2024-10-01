@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, useMediaQuery, ThemeProvider, createTheme, IconButton, MenuItem, Menu } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, useMediaQuery, ThemeProvider, createTheme, IconButton, MenuItem, Menu, Link } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth'
 
 const theme = createTheme({
@@ -13,16 +13,17 @@ const theme = createTheme({
 });
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const hideNavbarRoutes = ['/login', '/signup'];
-  const isLoggedIn = Auth.loggedIn()
-  
+  const isLoggedIn = Auth.loggedIn();
+
   if (hideNavbarRoutes.includes(location.pathname)) {
     return null;
   }
-  
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -31,18 +32,21 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    Auth.logout(); // Ensure you have a logout function in your Auth utility
+    // Optionally, you can redirect the user after logging out
+  };
+
   const menuItems = [
-    { text: 'Home', link: '/' },
     { text: 'Calculator', link: '/calculator' },
-    {text: 'Quiz', link: '/quiz'},
-    { text: 'Login', link: '/login' },
+    { text: 'Quiz', link: '/quiz' },
   ];
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 139, 0.4)', borderRadius: '20px' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#6777b8' }}>
         <Toolbar>
-          <Typography variant="h6" sx={{ color: 'white', flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ color: 'white', flexGrow: 1, cursor: 'pointer' }} onClick={() => navigate('/')}>
             Celestial Insights
           </Typography>
           {matches ? (
@@ -52,10 +56,8 @@ const Navbar = () => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleMenu}
-                sx={{
-                  color: 'black',
-                  marginLeft: 'auto'
-                }}>
+                sx={{ color: 'white', marginLeft: 'auto' }}
+              >
                 <MenuIcon />
               </IconButton>
               <Menu
@@ -78,6 +80,11 @@ const Navbar = () => {
                     {item.text}
                   </MenuItem>
                 ))}
+                {isLoggedIn && (
+                  <MenuItem onClick={handleLogout}>
+                    Logout
+                  </MenuItem>
+                )}
               </Menu>
             </>
           ) : (
@@ -87,6 +94,15 @@ const Navbar = () => {
                   {item.text}
                 </Button>
               ))}
+              {isLoggedIn ? (
+                <Button color="inherit" sx={{ color: 'white' }} onClick={handleLogout}>
+                  Logout
+                </Button>
+              ) : (
+                <Button color="inherit" sx={{ color: 'white' }} href="/login">
+                  Login
+                </Button>
+              )}
             </>
           )}
         </Toolbar>
