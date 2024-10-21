@@ -3,6 +3,7 @@ import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [createUser] = useMutation(CREATE_USER);
@@ -169,6 +170,9 @@ const SignUp = () => {
             Sign Up
           </Button>
         </form>
+        <Typography variant="body2" style={{ marginTop: '16px', paddingTop: '1rem' }}>
+          Already have an account? <Link to="/login">Login</Link>
+        </Typography>
         <Box sx={{ height: '2rem', padding: '1rem' }}>
         {formError && (
           <Typography color="error" gutterBottom>
